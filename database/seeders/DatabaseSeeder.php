@@ -15,11 +15,13 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Administrasi',
-            'email' => 'admin@gmail.com',
-            'password' => HASH::make('admin123'),
-            'role' => 'admin',
-        ]);
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Administrasi',
+        //     'email' => 'admin@gmail.com',
+        //     'password' => HASH::make('admin123'),
+        //     'role' => 'admin',
+        // ]);
+
+        $this->call(DataMasterSeeder::class);
     }
 }

@@ -24,6 +24,10 @@
 
                 <div class="card">
                     <div class="card-body">
+                        <div class="form-group">
+                            <label>NISN/NUPTK</label>
+                            <input type="text" name="nisn" class="form-control" required value="{{ old('nisn', $user->nisn) }}" readonly>
+                        </div>
 
                         <div class="form-group">
                             <label>Name</label>

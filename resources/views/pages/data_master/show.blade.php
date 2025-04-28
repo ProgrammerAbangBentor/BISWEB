@@ -34,11 +34,9 @@
                             </div>
                             <div class="profile-widget-description">
                                 <div class="profile-widget-name">
-                                    Hi!! {{ $user->name }}
+                                    {{ $user->nama }}
                                 </div>
-                                <div class="mt-3">
-                                    <strong>Email:</strong> {{ $user->email }} <br>
-                                </div>
+
                                 <strong>Nilai Akhir :</strong> {{ $user->nilai_akhir ?? ' ... ' }}<br>
                             </div>
                         </div>
@@ -49,110 +47,130 @@
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <h4>Detail Data</h4>
                                 <!-- Tombol Print -->
-                                <button onclick="printProfile()" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-print"></i> Print
-                                </button>
+
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive" id="printableArea">
                                     <table class="table table-striped">
                                         <tr>
                                             <th>Nama</th>
-                                            <td>{{ $dataMaster->nama ?? '-' }}</td>
+                                            <td>{{ $user->nama ?? '-' }}</td>
                                         </tr>
 
                                         @if ($user->role == 'siswa')
                                             <tr>
                                                 <th>NIS</th>
-                                                <td>{{ $dataMaster->nis ?? '-' }}</td>
+                                                <td>{{ $user->nis ?? '-' }}</td>
                                             </tr>
                                         @endif
 
                                         <tr>
                                             <th>{{ $user->role == 'guru' ? 'NUPTK' : 'NISN' }}</th>
-                                            <td>{{ $dataMaster->nisn ?? '-' }}</td>
+                                            <td>{{ $user->nisn ?? '-' }}</td>
                                         </tr>
 
                                         <tr>
                                             <th>Jenis Kelamin</th>
-                                            <td>{{ $dataMaster->jenis_kelamin ?? '-' }}</td>
+                                            <td>{{ $user->jenis_kelamin ?? '-' }}</td>
                                         </tr>
 
                                         <tr>
                                             <th>Tempat Lahir</th>
-                                            <td>{{ $dataMaster->tempat_lahir ?? '-' }}</td>
+                                            <td>{{ $user->tempat_lahir ?? '-' }}</td>
                                         </tr>
 
                                         <tr>
                                             <th>Tanggal Lahir</th>
-                                            <td>{{ $dataMaster->tanggal_lahir ?? '-' }}</td>
+                                            <td>{{ $user->tanggal_lahir ?? '-' }}</td>
                                         </tr>
 
                                         @if ($user->role == 'siswa')
                                             <tr>
                                                 <th>Jurusan</th>
-                                                <td>{{ $dataMaster->jurusan ?? '-' }}</td>
+                                                <td>{{ $user->jurusan ?? '-' }}</td>
                                             </tr>
                                         @endif
 
                                         <tr>
                                             <th>Agama</th>
-                                            <td>{{ $dataMaster->agama ?? '-' }}</td>
+                                            <td>{{ $user->agama ?? '-' }}</td>
                                         </tr>
 
                                         <tr>
                                             <th>No Telepon</th>
-                                            <td>{{ $dataMaster->no_telfon ?? '-' }}</td>
+                                            <td>{{ $user->no_telfon ?? '-' }}</td>
                                         </tr>
 
                                         <tr>
                                             <th>NIK</th>
-                                            <td>{{ $dataMaster->nik ?? '-' }}</td>
+                                            <td>{{ $user->nik ?? '-' }}</td>
                                         </tr>
 
                                         <tr>
                                             <th>Alamat</th>
-                                            <td>{{ $dataMaster->alamat ?? '-' }}</td>
+                                            <td>{{ $user->alamat ?? '-' }}</td>
                                         </tr>
 
                                         <tr>
                                             <th>Nama Ayah</th>
-                                            <td>{{ $dataMaster->nama_ayah ?? '-' }}</td>
+                                            <td>{{ $user->nama_ayah ?? '-' }}</td>
                                         </tr>
 
                                         <tr>
                                             <th>Nama Ibu</th>
-                                            <td>{{ $dataMaster->nama_ibu ?? '-' }}</td>
+                                            <td>{{ $user->nama_ibu ?? '-' }}</td>
                                         </tr>
 
                                         @if ($user->role == 'siswa')
                                             <tr>
                                                 <th>Asal Sekolah</th>
-                                                <td>{{ $dataMaster->asal_sekolah ?? '-' }}</td>
+                                                <td>{{ $user->asal_sekolah ?? '-' }}</td>
                                             </tr>
                                         @endif
 
                                         <tr>
                                             <th>Jumlah Saudara</th>
-                                            <td>{{ $dataMaster->jumlah_saudara ?? '-' }}</td>
+                                            <td>{{ $user->jumlah_saudara ?? '-' }}</td>
                                         </tr>
 
 
                                         @if ($user->role == 'siswa')
                                             <tr>
                                                 <th>Tanggal Masuk</th>
-                                                <td>{{ $dataMaster->tanggal_masuk ?? '-' }}</td>
+                                                <td>{{ $user->tanggal_masuk ?? '-' }}</td>
                                             </tr>
                                         @endif
 
                                         @if ($user->role == 'guru')
                                             <tr>
                                                 <th>Tanggal Masuk Guru</th>
-                                                <td>{{ $dataMaster->tanggal_masuk_guru ?? '-' }}</td>
+                                                <td>{{ $user->tanggal_masuk_guru ?? '-' }}</td>
                                             </tr>
                                         @endif
                                     </table>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4>Form Kirim Laporan</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Silakan isi form berikut untuk mengirim laporan.</p>
+
+                                <form action="{{ route('data-laporan.kirim', $user->id) }}" method="POST" onsubmit="return validateForm();">
+                                    @csrf
+                                    @method('POST')
+
+                                    <div class="form-group">
+                                        <label for="keterangan">Keterangan</label>
+                                        <textarea name="keterangan" id="keterangan" class="form-control" placeholder="Masukkan keterangan..." required></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-sm btn-warning mr-2">
+                                        <i class="fas fa-paper-plane"></i> Pindah
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>

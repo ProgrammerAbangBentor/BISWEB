@@ -33,10 +33,16 @@
                             <div class="card-body">
                                 <!-- Filter Form -->
                                 <div class="row mb-3">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <form method="GET" action="{{ route('data-master.index') }}" class="form-inline">
                                             <div class="input-group mr-2">
-                                                <input type="text" class="form-control" placeholder="Search by Name" name="search" value="{{ request('search') }}">
+                                                <input type="text" class="form-control" placeholder="Search by name" name="search" value="{{ request('search') }}">
+                                            </div>
+                                            <div class="input-group mr-2">
+                                                <input type="text" class="form-control" placeholder="Search by Jurusan" name="search_jurusan" value="{{ request('search_jurusan') }}">
+                                            </div>
+                                            <div class="input-group mr-2">
+                                                <input type="text" class="form-control" placeholder="Search by Tahun Masuk" name="search_tahun_masuk" value="{{ request('search_tahun_masuk') }}">
                                             </div>
                                             <div class="input-group mr-2">
                                                 <select name="role" class="form-control selectric">
@@ -98,13 +104,10 @@
 
                                                     <td>
                                                         <div class="d-flex">
-                                                            <form action="{{ route('data-laporan.kirim',$item->id) }}" method="POST" onsubmit="return confirm('Kirim data ini ke laporan?');">
-                                                                @csrf
-                                                                @method('POST')
-                                                                <button type="submit" class="btn btn-sm btn-warning mr-2">
-                                                                    <i class="fas fa-paper-plane"></i> Pindah
-                                                                </button>
-                                                            </form>
+
+                                                            <a href="{{ route('data-master.show', $item->id) }}" class="btn btn-sm btn-primary mr-2">
+                                                                <i class="fas fa-eye"></i> Detail
+                                                            </a>
                                                             <a href="{{ route('data-master.edit', $item->id) }}" class="btn btn-sm btn-info mr-2">
                                                                 <i class="fas fa-edit"></i> Edit
                                                             </a>

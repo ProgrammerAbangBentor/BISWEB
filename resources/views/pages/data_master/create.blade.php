@@ -120,7 +120,7 @@
 
                                     <!-- NISN / NIP -->
                                     <div class="form-group">
-                                        <label for="nisn" id="nisn-label">ID Pelajar</label>
+                                        <label for="nisn" id="nisn-label">NISN</label>
                                         <input type="text" name="nisn" id="nisn" class="form-control" required>
                                     </div>
 

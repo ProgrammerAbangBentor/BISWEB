@@ -54,6 +54,7 @@
                                 <tr><td>Nama Ayah</td><td>: {{ $data->nama_ayah ?? '...' }}</td></tr>
                                 <tr><td>Nama Ibu</td><td>: {{ $data->nama_ibu ?? '...' }}</td></tr>
                                 <tr><td>Jumlah Saudara</td><td>: {{ $data->jumlah_saudara }}</td></tr>
+
                             @endif
                         </table>
                     </div>

@@ -27,6 +27,7 @@
                                     <th>NIS/NUPTK</th>
                                     <th>Role</th>
                                     <th>Tanggal Keluar</th>
+                                    <th>Ket</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,6 +37,7 @@
                                         <td>{{ $laporan->nisn }}</td>
                                         <td>{{ ucfirst($laporan->role) }}</td>
                                         <td>{{ \Carbon\Carbon::parse($laporan->created_at)->format('d M Y') }}</td>
+                                        <td>{{ $laporan->keterangan }}</td>
                                     </tr>
                                 @empty
                                     <tr>

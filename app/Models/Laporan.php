@@ -30,5 +30,7 @@ class Laporan extends Model
         'role',
         'tanggal_masuk',
         'tanggal_masuk_guru',
+        'keterangan',
+        'nilai_akhir',
     ];
 }

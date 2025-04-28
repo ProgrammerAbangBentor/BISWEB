@@ -30,6 +30,8 @@ class DataMaster extends Model
         'tanggal_masuk',
         'tanggal_masuk_guru',
         'role',
+        'nilai_akhir',
+        
     ];
 }
 

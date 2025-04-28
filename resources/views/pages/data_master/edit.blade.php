@@ -135,6 +135,10 @@
                                         <input type="date" name="tanggal_masuk_guru" id="tanggal_masuk_guru" class="form-control" value="{{ old('tanggal_masuk_guru', $dataMaster->tanggal_masuk_guru) }}">
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="nilai_akhir">Nilai Akhir</label>
+                                        <input type="text" name="nilai_akhir" id="nilai_akhir" class="form-control" value="{{ old('nilai_akhir', $dataMaster->nilai_akhir) }}">
+
                                     <!-- Submit Button -->
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Update</button>

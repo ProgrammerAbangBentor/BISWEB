@@ -73,6 +73,8 @@
                                                             {{ $user->nisn }}
                                                         @elseif($user->role == 'guru')
                                                             {{ $user->nisn }}
+                                                        @elseif($user->role == 'admin')
+                                                            {{ $user->nisn }}
                                                         @else
                                                             -
                                                         @endif
